@@ -1,0 +1,457 @@
+PCI DSS (Payment Card Industry Data Security Standard) is a set of security standards designed to ensure that all companies that accept, process, store or transmit credit card information maintain a secure environment. The current version is PCI DSS 4.0, released in March 2022.
+
+PCI DSS 12 Core Requirements in Detail:
+
+1. Install and maintain network security controls
+   - Implement firewalls between untrusted networks and the cardholder data environment
+   - Restrict inbound and outbound traffic to only necessary protocols and ports
+   - Implement network segmentation to isolate the cardholder data environment
+   - Document network security control configurations and rules
+   - Review firewall and router rule sets at least every six months
+
+2. Apply secure configurations to all system components
+   - Change all vendor-supplied defaults before installing systems on the network
+   - Develop configuration standards for all system components
+   - Encrypt all non-console administrative access using strong cryptography
+   - Maintain an inventory of system components in scope for PCI DSS
+   - Ensure security policies and procedures are documented and in use
+
+3. Protect stored account data
+   - Keep cardholder data storage to a minimum by implementing data retention policies
+   - Do not store sensitive authentication data after authorization
+   - Mask PAN (Primary Account Number) when displayed (first six and last four digits are the maximum that can be displayed)
+   - Render PAN unreadable anywhere it is stored using methods such as one-way hashes, truncation, tokenization, or strong cryptography
+   - Protect cryptographic keys used for encryption of cardholder data
+   - Document and implement procedures to protect keys used to secure stored cardholder data
+
+4. Protect cardholder data with strong cryptography during transmission
+   - Use strong cryptography and security protocols to safeguard sensitive cardholder data during transmission
+   - Never send unprotected PANs by end-user messaging technologies (e.g., email, instant messaging, SMS, chat)
+   - Maintain an inventory of all trusted keys and certificates
+   - Document and implement procedures for protecting cryptographic keys
+
+5. Protect all systems and networks from malicious software
+   - Deploy anti-virus software on all systems commonly affected by malware
+   - Ensure anti-virus programs are current, actively running, and generating audit logs
+   - Ensure all anti-virus mechanisms are current, actively running, and capable of generating audit logs
+   - Address the evolving nature of malware threats for all system components
+
+6. Develop and maintain secure systems and software
+   - Establish a process to identify security vulnerabilities and assign a risk ranking to newly discovered vulnerabilities
+   - Ensure all system components and software are protected from known vulnerabilities by installing vendor-supplied security patches
+   - Develop internal and external software applications securely
+   - Follow change control processes for all changes to system components
+   - Incorporate security throughout the software development life cycle
+   - Protect web applications by addressing common vulnerabilities or implementing a web application firewall
+
+7. Restrict access to cardholder data by business need to know
+   - Limit access to system components and cardholder data to only those individuals whose job requires such access
+   - Establish an access control system for systems with multiple users that restricts access based on a user's need to know
+   - Ensure critical data can only be accessed by authorized personnel
+   - Document policies and procedures for granting access to cardholder data, including a list of roles and access needs
+
+8. Identify users and authenticate access to system components
+   - Define and implement policies and procedures to ensure proper user identification management
+   - Employ at least one authentication factor (something you know, something you have, or something you are) for all users
+   - Secure all individual non-console administrative access and all remote access to the CDE using multi-factor authentication
+   - Document and communicate authentication procedures and policies to all users
+   - Do not use group, shared, or generic IDs, passwords, or other authentication methods
+   - Render all passwords unreadable during transmission and storage using strong cryptography
+
+9. Restrict physical access to cardholder data
+   - Use appropriate facility entry controls to limit and monitor physical access to systems in the cardholder data environment
+   - Develop procedures to easily distinguish between onsite personnel and visitors
+   - Implement procedures to identify and authorize visitors, including maintaining a visitor log
+   - Use video cameras or access control mechanisms to monitor individual physical access to sensitive areas
+   - Protect publicly accessible network jacks
+   - Maintain inventory logs of all media and store media securely
+   - Destroy physical media when it is no longer needed for business or legal reasons
+
+10. Log and monitor all access to network resources and cardholder data
+    - Implement audit trails to link all access to system components to each individual user
+    - Automate audit trails for all system components
+    - Record specific audit trail entries for all system components for each event
+    - Synchronize all critical system clocks and times
+    - Secure audit trails so they cannot be altered
+    - Review logs and security events for all system components at least daily
+    - Retain audit trail history for at least one year, with a minimum of three months immediately available for analysis
+
+11. Test security of systems and networks regularly
+    - Implement processes to test for the presence of wireless access points and detect unauthorized wireless access points
+    - Run internal and external network vulnerability scans at least quarterly and after any significant change
+    - Perform external and internal penetration testing at least annually and after any significant infrastructure or application upgrade
+    - Use intrusion-detection and/or intrusion-prevention techniques to detect and/or prevent intrusions into the network
+    - Deploy change-detection mechanisms to alert personnel to unauthorized modification of critical system files, configuration files, or content files
+    - Develop and maintain a methodology for penetration testing that includes coverage for the entire CDE perimeter and critical systems
+
+12. Support information security with organizational policies and programs
+    - Establish, publish, maintain, and disseminate a security policy that addresses all PCI DSS requirements
+    - Implement a risk-assessment process that is performed at least annually and upon significant changes to the environment
+    - Develop usage policies for critical technologies to define proper use of these technologies for all personnel
+    - Ensure security policies and procedures clearly define information security responsibilities for all personnel
+    - Assign responsibility for information security management to a Chief Security Officer or other security-knowledgeable member of management
+    - Implement a formal security awareness program to make all personnel aware of the cardholder data security policy and procedures
+    - Screen potential personnel prior to hire to minimize the risk of attacks from internal sources
+    - Maintain and implement policies and procedures to manage service providers with whom cardholder data is shared
+    - Implement an incident response plan and be prepared to respond immediately to a system breach
+
+PCI DSS Merchant Levels:
+
+Level 1: Merchants processing over 6 million card transactions annually
+- Requirements: Annual Report on Compliance (ROC) by Qualified Security Assessor (QSA)
+- Quarterly network scan by Approved Scanning Vendor (ASV)
+- Attestation of Compliance Form
+
+Level 2: Merchants processing 1 to 6 million card transactions annually
+- Requirements: Annual Self-Assessment Questionnaire (SAQ)
+- Quarterly network scan by ASV
+- Attestation of Compliance Form
+
+Level 3: Merchants processing 20,000 to 1 million e-commerce transactions annually
+- Requirements: Annual SAQ
+- Quarterly network scan by ASV
+- Attestation of Compliance Form
+
+Level 4: Merchants processing less than 20,000 e-commerce transactions annually or up to 1 million regular transactions
+- Requirements: Annual SAQ recommended
+- Quarterly network scan by ASV if applicable
+- Compliance validation requirements set by merchant bank
+
+PCI DSS Self-Assessment Questionnaires (SAQs):
+
+SAQ A: For card-not-present merchants who have fully outsourced all cardholder data functions
+SAQ A-EP: For e-commerce merchants who outsource all payment processing but have a website that affects security
+SAQ B: For merchants using only imprint machines or standalone dial-out terminals
+SAQ B-IP: For merchants using only standalone, PTS-approved payment terminals
+SAQ C: For merchants with payment application systems connected to the internet
+SAQ C-VT: For merchants who manually enter transactions via web-based virtual terminal
+SAQ D: For all other merchants not included in the descriptions for SAQ types A through C
+SAQ P2PE: For merchants using approved point-to-point encryption solutions
+
+PCI DSS Compliance Process:
+
+1. Scope: Identify all system components that are in scope for PCI DSS
+2. Assess: Examine the compliance of system components in scope
+3. Report: Document assessment results and remediation activities
+4. Attest: Complete the appropriate attestation documents
+5. Submit: Provide the documentation to the requesting organization (acquirer, payment brand)
+6. Remediate: Address any identified non-compliant issues
+7. Monitor: Maintain compliance through continuous monitoring and regular reassessment
+
+PCI DSS Compensating Controls:
+When an entity cannot meet a PCI DSS requirement explicitly as stated, they may implement compensating controls if:
+- There is a legitimate technical or documented business constraint
+- The compensating control sufficiently mitigates the risk associated with the requirement
+- The control goes above and beyond other PCI DSS requirements
+- The control is commensurate with the additional risk imposed by not adhering to the requirement
+
+PCI DSS Key Changes in Version 4.0:
+- Increased focus on security as a continuous process
+- Enhanced validation methods with defined approaches
+- Increased flexibility for organizations to demonstrate how they are securing data
+- Stronger authentication requirements, including multi-factor authentication
+- Expanded requirements for encryption and monitoring
+- New requirements for targeted risk analysis
+- Enhanced testing procedures for greater clarity
+
+ISO 27001 (Information Security Management System) is an international standard that provides a framework for establishing, implementing, maintaining, and continually improving an information security management system (ISMS). The current version is ISO/IEC 27001:2022.
+
+ISO 27001 Structure and Requirements:
+
+1. Context of the Organization (Clause 4)
+   - Understanding the organization and its context
+   - Understanding the needs and expectations of interested parties
+   - Determining the scope of the information security management system
+   - Information security management system (general requirements)
+
+2. Leadership (Clause 5)
+   - Leadership and commitment
+   - Policy: Management must establish an information security policy
+   - Organizational roles, responsibilities, and authorities
+   - Top management must demonstrate leadership and commitment to the ISMS
+
+3. Planning (Clause 6)
+   - Actions to address risks and opportunities
+   - Information security risk assessment process
+   - Information security risk treatment process
+   - Information security objectives and planning to achieve them
+   - Planning of changes
+
+4. Support (Clause 7)
+   - Resources: The organization must determine and provide resources needed for the ISMS
+   - Competence: Ensuring personnel are competent for their information security roles
+   - Awareness: Personnel must be aware of the information security policy and their contribution
+   - Communication: Internal and external communications relevant to the ISMS
+   - Documented information: Creation, updating, and control of documented information
+
+5. Operation (Clause 8)
+   - Operational planning and control
+   - Information security risk assessment
+   - Information security risk treatment
+
+6. Performance Evaluation (Clause 9)
+   - Monitoring, measurement, analysis, and evaluation
+   - Internal audit program
+   - Management review of the ISMS
+
+7. Improvement (Clause 10)
+   - Nonconformity and corrective action
+   - Continual improvement of the ISMS
+
+ISO 27001 Annex A Controls (ISO 27002:2022):
+
+1. Organizational Controls (5)
+   - Information security policies
+   - Information security roles and responsibilities
+   - Segregation of duties
+   - Management responsibilities
+   - Contact with authorities
+   - Contact with special interest groups
+   - Information security in project management
+   - Inventory of information and other associated assets
+   - Acceptable use of information and other associated assets
+   - Return of assets
+   - Classification of information
+   - Labelling of information
+   - Information transfer
+   - Access control
+   - Identity management
+   - Authentication information
+   - Access rights
+   - Information security in supplier relationships
+   - Addressing information security within supplier agreements
+   - Managing information security in the ICT supply chain
+   - Monitoring, review and change management of supplier services
+   - Information security for use of cloud services
+   - Information security incident management planning and preparation
+   - Assessment and decision on information security events
+   - Response to information security incidents
+   - Learning from information security incidents
+   - Collection of evidence
+   - Information security during disruption
+   - ICT readiness for business continuity
+   - Legal, statutory, regulatory and contractual requirements
+   - Intellectual property rights
+   - Protection of records
+   - Privacy and protection of personal identifiable information
+   - Independent review of information security
+   - Compliance with policies, rules and standards for information security
+   - Documented operating procedures
+
+2. People Controls (6)
+   - Screening
+   - Terms and conditions of employment
+   - Information security awareness, education and training
+   - Disciplinary process
+   - Responsibilities after termination or change of employment
+   - Confidentiality or non-disclosure agreements
+   - Remote working
+   - Information security event reporting
+
+3. Physical Controls (7)
+   - Physical security perimeters
+   - Physical entry
+   - Securing offices, rooms and facilities
+   - Physical security monitoring
+   - Protecting against physical and environmental threats
+   - Working in secure areas
+   - Clear desk and clear screen
+   - Equipment siting and protection
+   - Security of assets off-premises
+   - Storage media
+   - Supporting utilities
+   - Cabling security
+   - Equipment maintenance
+   - Secure disposal or re-use of equipment
+
+4. Technological Controls (8)
+   - User endpoint devices
+   - Privileged access rights
+   - Information access restriction
+   - Access to source code
+   - Secure authentication
+   - Capacity management
+   - Protection against malware
+   - Management of technical vulnerabilities
+   - Configuration management
+   - Information deletion
+   - Data masking
+   - Data leakage prevention
+   - Information backup
+   - Redundancy of information processing facilities
+   - Logging
+   - Monitoring activities
+   - Clock synchronization
+   - Use of privileged utility programs
+   - Installation of software on operational systems
+   - Networks security
+   - Security of network services
+   - Segregation of networks
+   - Web filtering
+   - Use of cryptography
+   - Secure development life cycle
+   - Application security requirements
+   - Secure system architecture and engineering principles
+   - Secure coding
+   - Security testing in development and acceptance
+   - Outsourced development
+   - Separation of development, test and production environments
+   - Change management
+   - Test information
+   - Protection of information systems during audit testing
+
+ISO 27001 Certification Process:
+
+1. Gap Analysis
+   - Assess current security posture against ISO 27001 requirements
+   - Identify gaps and areas for improvement
+   - Develop implementation plan
+
+2. Risk Assessment
+   - Identify information assets
+   - Identify threats and vulnerabilities
+   - Assess risks and determine risk treatment options
+   - Develop Statement of Applicability (SoA)
+
+3. ISMS Implementation
+   - Develop and implement security policies and procedures
+   - Implement selected controls from Annex A
+   - Train staff on security awareness and ISMS requirements
+   - Establish monitoring and measurement processes
+
+4. Internal Audit
+   - Conduct internal audits to verify compliance with ISO 27001
+   - Identify and address nonconformities
+   - Management review of ISMS effectiveness
+
+5. Certification Audit
+   - Stage 1: Documentation review by certification body
+   - Stage 2: On-site audit by certification body
+   - Address any nonconformities identified during audit
+   - Receive ISO 27001 certification (valid for 3 years)
+
+6. Surveillance Audits
+   - Annual surveillance audits by certification body
+   - Recertification audit every 3 years
+
+ISO 27001 Risk Assessment Methodology:
+
+1. Establish Risk Assessment Framework
+   - Define risk assessment approach
+   - Establish risk acceptance criteria
+   - Define impact and likelihood scales
+
+2. Identify Risks
+   - Identify information assets
+   - Identify threats to those assets
+   - Identify existing controls
+   - Identify vulnerabilities
+   - Identify potential consequences
+
+3. Analyze and Evaluate Risks
+   - Assess impact of potential incidents
+   - Assess likelihood of incidents occurring
+   - Determine level of risk
+   - Compare risk levels against risk acceptance criteria
+
+4. Risk Treatment
+   - Select risk treatment options (mitigate, transfer, avoid, accept)
+   - Develop risk treatment plan
+   - Implement selected controls
+   - Accept residual risks
+
+ISO 27001 Integration with Other Standards:
+
+1. ISO 27002: Provides detailed implementation guidance for ISO 27001 controls
+2. ISO 27005: Provides guidelines for information security risk management
+3. ISO 27017: Guidelines for information security controls for cloud services
+4. ISO 27018: Guidelines for protecting personally identifiable information (PII) in public clouds
+5. ISO 27701: Extension to ISO 27001 for privacy information management (PIMS)
+6. ISO 22301: Business continuity management systems
+7. ISO 31000: Risk management principles and guidelines
+8. ISO 9001: Quality management systems
+
+ISO 27001 Benefits:
+
+1. Improved security posture and reduced risk of security breaches
+2. Systematic approach to managing sensitive company information
+3. Increased business resilience
+4. Compliance with legal and regulatory requirements
+5. Enhanced customer and stakeholder confidence
+6. Competitive advantage in the marketplace
+7. Better alignment of information security with business objectives
+8. Consistent approach to security across the organization
+9. Reduced costs associated with security incidents
+10. Improved security awareness among employees
+
+GDPR (General Data Protection Regulation) is a regulation in EU law on data protection and privacy. Key principles include:
+1. Lawfulness, fairness, and transparency
+2. Purpose limitation
+3. Data minimization
+4. Accuracy
+5. Storage limitation
+6. Integrity and confidentiality
+7. Accountability
+
+SOC 2 (Service Organization Control 2) is a framework for managing customer data. The five trust service criteria are:
+1. Security
+2. Availability
+3. Processing integrity
+4. Confidentiality
+5. Privacy
+
+Credit card transaction security best practices:
+1. Implement end-to-end encryption
+2. Use tokenization to replace sensitive data
+3. Enforce strong authentication methods
+4. Conduct regular security assessments
+5. Maintain detailed audit logs
+6. Implement real-time fraud detection
+7. Ensure secure key management
+8. Follow the principle of least privilege
+9. Conduct regular employee security training
+10. Maintain an incident response plan
+
+Data protection best practices:
+1. Classify data based on sensitivity
+2. Implement access controls
+3. Use encryption for sensitive data
+4. Conduct regular data backups
+5. Implement data loss prevention tools
+6. Maintain data retention policies
+7. Conduct regular data protection impact assessments
+8. Implement privacy by design principles
+9. Maintain data processing records
+10. Ensure secure data disposal
+
+Risk management framework:
+1. Risk identification
+2. Risk assessment
+3. Risk treatment
+4. Risk monitoring
+5. Risk reporting
+6. Risk governance
+
+Compliance monitoring and reporting:
+1. Establish compliance metrics
+2. Conduct regular compliance assessments
+3. Implement automated compliance monitoring
+4. Maintain compliance documentation
+5. Report compliance status to stakeholders
+6. Address compliance gaps promptly
+7. Stay updated on regulatory changes
+8. Conduct regular compliance training
+9. Perform internal audits
+10. Prepare for external audits
+
+Gap analysis methodology:
+1. Identify applicable requirements
+2. Assess current state
+3. Determine target state
+4. Identify gaps
+5. Prioritize gaps
+6. Develop remediation plans
+7. Implement controls
+8. Verify effectiveness
+9. Document results
+10. Report to stakeholders
